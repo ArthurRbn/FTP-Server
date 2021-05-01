@@ -26,4 +26,4 @@ Then connect with a ftp client or use the script test_ftp.sh to test user authen
 - ``ip`` host's IP adress
 - ``port`` host's listening port
 
-Mark : 16/20
+Tests passed : 80%
