@@ -6,9 +6,9 @@ Supported commands :
 - ``PASS`` - Enter password
 - ``QUIT`` - Close connection
 - ``HELP`` - Get supported commands
-- ``CWD``  - Change working directory
+- ``CWD`` &nbsp; - Change working directory
 - ``CDUP`` - Go to parent directory
-- ``PWD`` &nbsp; &nbsp; - Get working directory path
+- ``PWD`` &nbsp; - Get working directory path
 - ``LIST`` - List files in working directory
 - ``RETR`` - Retrieve a file
 - ``STOR`` - Store a file
