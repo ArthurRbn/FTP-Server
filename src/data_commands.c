@@ -65,8 +65,7 @@ void store_cmd(client_t *cli, server_t *server)
         send_message("425 Select a data transfer mode.\n", cli->ctrlSock);
         return;
     }
-    if (!index(cli->buff, ' ') || !(path = strdup(index(cli->buff, ' '))) ||
-        *(++path) == 13) {
+    if (!index(cli->buff, ' ') || !(path = strdup(index(cli->buff, ' '))) || *(++path) == 13) {
         send_message("501 Syntax error in parameters.\n", cli->ctrlSock);
         return;
     } else if (chdir(cli->path) != 0 || !buff || is_dir_valid(path)) {

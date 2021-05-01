@@ -34,8 +34,7 @@ void cwd_cmd(client_t *cli)
 {
     char *path = NULL;
 
-    if (!index(cli->buff, ' ') ||
-    !(path = strdup(index(cli->buff, ' ') + 1)) || *path == 13) {
+    if (!index(cli->buff, ' ') || !(path = strdup(index(cli->buff, ' ') + 1)) || *path == 13) {
         send_message("550 Missing parameter.\n", cli->ctrlSock);
         return;
     }
@@ -47,18 +46,15 @@ void cwd_cmd(client_t *cli)
     if (cli->path)
         free(cli->path);
     cli->path = get_absolute_path(path);
-    send_message("250 Requested file action okay, completed.\n",
-    cli->ctrlSock);
+    send_message("250 Requested file action okay, completed.\n", cli->ctrlSock);
 }
 
 void dele_cmd(client_t *client)
 {
     char *path = NULL;
 
-    if (!index(client->buff, ' ') ||
-    !(path = strdup(index(client->buff, ' '))) || *(++path) == 13) {
-        send_message("501 Syntax error in parameters or arguments.\n",
-        client->ctrlSock);
+    if (!index(client->buff, ' ') || !(path = strdup(index(client->buff, ' '))) || *(++path) == 13) {
+        send_message("501 Syntax error in parameters or arguments.\n", client->ctrlSock);
         return;
     }
     path[strlen(path) - 2] = 0;
@@ -67,8 +63,7 @@ void dele_cmd(client_t *client)
         return;
     }
     if (remove(path) == 0) {
-        send_message("250 Requested file action okay, completed.\n",
-        client->ctrlSock);
+        send_message("250 Requested file action okay, completed.\n", client->ctrlSock);
     } else
         send_message("550 Requested action not taken.\n", client->ctrlSock);
 }

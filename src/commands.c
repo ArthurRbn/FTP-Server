@@ -12,8 +12,7 @@ void user_cmd(client_t *client)
     char *username = index(client->buff, ' ');
 
     if (!username || strcspn(++username, "\r\n") == 0) {
-        send_message("501 Syntax error in parameters or arguments.\n",
-        client->ctrlSock);
+        send_message("501 Syntax error in parameters or arguments.\n", client->ctrlSock);
         return;
     }
     username[strcspn(username, "\r\n")] = 0;
@@ -44,14 +43,12 @@ void password_cmd(client_t *client)
 
 void noop_cmd(client_t *client)
 {
-    send_message("200 Requested file action okay, completed.\n",
-    client->ctrlSock);
+    send_message("200 Requested file action okay, completed.\n", client->ctrlSock);
 }
 
 void help_cmd(client_t *client)
 {
-    send_message("214 Available commands: USER, PASS, CWD, CDUP, QUIT, DELE,\
-    PWD, PASV, PORT, HELP, NOOP, RETR, STOR, LIST\n", client->ctrlSock);
+    send_message("214 Available commands: USER, PASS, CWD, CDUP, QUIT, DELE, PWD, PASV, PORT, HELP, NOOP, RETR, STOR, LIST\n", client->ctrlSock);
 }
 
 void quit_cmd(client_t *client)

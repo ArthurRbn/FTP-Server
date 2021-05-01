@@ -34,8 +34,7 @@ client_t *create_client(int socket, char *path, int port, char *ip)
 client_t *client_by_socket(server_t *server, int socket)
 {
     for (int i = 0; i < 10; i++) {
-        if (server->clients[i] && (server->clients[i]->ctrlSock == socket ||
-        server->clients[i]->dataSock == socket))
+        if (server->clients[i] && (server->clients[i]->ctrlSock == socket || server->clients[i]->dataSock == socket))
             return server->clients[i];
     }
     return NULL;

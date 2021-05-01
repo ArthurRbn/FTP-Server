@@ -45,11 +45,9 @@ static server_t *init_data_connection(char *path)
     serv->config->sin_port = htons(0);
     serv->config->sin_family = AF_INET;
     serv->config->sin_addr.s_addr = INADDR_ANY;
-    if (serv->socketFd < 0 || setsockopt(serv->socketFd, SOL_SOCKET,
-    SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
+    if (serv->socketFd < 0 || setsockopt(serv->socketFd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
         exit(84);
-    if (bind(serv->socketFd, (struct sockaddr *) serv->config, size) == -1 ||
-    !(serv->buff = calloc(BUFF_SIZE, 1)))
+    if (bind(serv->socketFd, (struct sockaddr *) serv->config, size) == -1 || !(serv->buff = calloc(BUFF_SIZE, 1)))
         return NULL;
     serv->dataTransfer = true;
     serv->active = false;

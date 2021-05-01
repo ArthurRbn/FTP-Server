@@ -49,8 +49,7 @@ bool check_command(client_t *client, server_t *server)
         cmdAction[idx](client);
     else if (dataState != 1)
         send_message("500 Syntax error\n", client->ctrlSock);
-    if (strstr(client->buff, "QUIT") ||
-    strstr(client->buff, "PASV"))
+    if (strstr(client->buff, "QUIT") || strstr(client->buff, "PASV"))
         return true;
     memset(client->buff, 0, BUFF_SIZE);
     return false;

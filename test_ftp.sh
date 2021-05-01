@@ -61,7 +61,7 @@ launch_client()
     echo "Expected reply-code: 220"
     echo "Received : ["`tail -n 1 $OUT |cat -e`"]"
     return 0
-  fi  
+  fi
 }
 
 launch_test()

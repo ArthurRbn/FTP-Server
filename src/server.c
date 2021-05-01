@@ -9,9 +9,7 @@
 
 server_t *init_server_2(server_t *server)
 {
-    if (bind(server->socketFd, (struct sockaddr *)server->config,
-    sizeof(struct sockaddr_in)) < 0 ||
-    !(server->buff = calloc(BUFF_SIZE, 1))) {
+    if (bind(server->socketFd, (struct sockaddr *)server->config, sizeof(struct sockaddr_in)) < 0 || !(server->buff = calloc(BUFF_SIZE, 1))) {
         perror("Error during server initialization");
         exit(84);
     }
@@ -37,15 +35,13 @@ server_t *init_server(char **av)
     int opt = 1;
     long port = strtol(av[1], NULL, 10);
 
-    if (port == 0 || !is_dir_valid(av[2]) || !server ||
-    !(server->config = calloc(1, sizeof(struct sockaddr_in)))) {
+    if (port == 0 || !is_dir_valid(av[2]) || !server || !(server->config = calloc(1, sizeof(struct sockaddr_in)))) {
         perror("Error during server initialization");
         exit(84);
     }
     server->path = get_absolute_path(av[2]);
     server->socketFd = socket(AF_INET, SOCK_STREAM, 0);
-    if (server->socketFd < 0 || setsockopt(server->socketFd, SOL_SOCKET,
-    SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
+    if (server->socketFd < 0 || setsockopt(server->socketFd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
         exit(84);
     server->config->sin_family = AF_INET;
     server->config->sin_addr.s_addr = htonl(INADDR_ANY);
@@ -62,8 +58,7 @@ int accept_connection(server_t *server)
     int freeSlot = 0;
     int new = connect_to_client(server);
 
-    if (new < 0 &&
-    (new = accept(server->socketFd, (struct sockaddr *)&ip, &socklen)) < 0) {
+    if (new < 0 && (new = accept(server->socketFd, (struct sockaddr *)&ip, &socklen)) < 0) {
         return -1;
     } else if (server->dataTransfer) {
         server->clients[0]->dataSock = new;
