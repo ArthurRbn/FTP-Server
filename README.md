@@ -22,4 +22,8 @@ Launch the server : ``./myftp [port] [path]``
 - ``port`` is the listening port
 - ``path`` is the path to default working directory when a user logs in. Can be relative or absolute.
 
+Then connect with a ftp client or use the script test_ftp.sh to test user authentication process : ``test_ftp.sh [ip] [port]``
+- ``ip`` host's IP adress
+- ``port`` host's listening port
+
 Mark : 16/20
