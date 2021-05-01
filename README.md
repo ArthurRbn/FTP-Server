@@ -2,7 +2,7 @@
 FTP server (RFC 959 compliant) that supports passive and active mode.
 
 Supported commands :
-- ``USER`` - Enter user name
+- ``USER`` - Enter username
 - ``PASS`` - Enter password
 - ``QUIT`` - Close connection
 - ``HELP`` - Get supported commands
