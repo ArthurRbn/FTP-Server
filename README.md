@@ -21,3 +21,5 @@ To test the server clone the repository and build the binary with ``make``.
 Launch the server : ``./myftp [port] [path]``  
 - ``port`` is the listening port
 - ``path`` is the path to default working directory when a user logs in. Can be relative or absolute.
+
+Mark : 16/20
